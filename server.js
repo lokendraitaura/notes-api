@@ -12,15 +12,8 @@ app.listen(PORT, () => {
   console.log(`server is running http://localhost:${PORT}/`);
 });
 
-app.get("/", (req, res) => {
-  res.send("notes-app start");
-});
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/notes", require("./routes/notes"));
 
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/notes', require('./routes/notes'));
-
-
-const { swaggerUi, specs } = require('./swagger');
-app.use('/notes-docs', swaggerUi.serve, swaggerUi.setup(specs));
-
-
+const { swaggerUi, specs } = require("./swagger");
+app.use("/", swaggerUi.serve, swaggerUi.setup(specs));

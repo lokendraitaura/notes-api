@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const removeVersionAndTransform = require("../plugins/removeVersionAndTransform");
+mongoose.plugin(removeVersionAndTransform);
 
 const connectDB = async () => {
   try {

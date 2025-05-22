@@ -24,14 +24,7 @@ exports.login = async (req, res) => {
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
-
-    const formattedUsers = users.map((user) => ({
-      userId: user._id,
-      name: user.name,
-      email: user.email,
-    }));
-
-    res.status(200).json(formattedUsers);
+    res.status(200).json(users);
   } catch (error) {
     console.error("Error fetching users:", error);
     res.status(500).json({ error: "Server Error" });
