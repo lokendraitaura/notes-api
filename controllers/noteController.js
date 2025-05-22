@@ -11,12 +11,12 @@ exports.getNotes = async (req, res) => {
 };
 
 exports.updateNote = async (req, res) => {
-  const note = await Note.findOneAndUpdate(
-    { _id: req.params.id, user: req.user },
+  await Note.findOneAndUpdate(
+    { _id:req.notesId, user: req.user },
     req.body,
     { new: true }
   );
-  res.json(note);
+  res.json({message:"Notes Updated Successfully!"});
 };
 
 exports.deleteNote = async (req, res) => {

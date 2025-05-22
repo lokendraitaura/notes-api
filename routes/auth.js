@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { signup, login } = require("../controllers/authController");
+const { signup, login, getAllUsers } = require("../controllers/authController");
 
 router.post("/signup", signup);
 router.post("/login", login);
+router.get("/getAllUsers", getAllUsers);
 
 module.exports = router;
 
@@ -55,6 +56,17 @@ module.exports = router;
  *                 type: string
  *               password:
  *                 type: string
+ *     responses:
+ *       200:
+ *         description: logIn
+ */
+
+/**
+ * @swagger
+ * /api/auth/getAllUsers:
+ *   get:
+ *     summary: get users list
+ *     tags: [Auth]
  *     responses:
  *       200:
  *         description: logIn

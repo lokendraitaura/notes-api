@@ -31,13 +31,10 @@ module.exports = router;
  *             required:
  *               - title
  *               - content
- *               - user
  *             properties:
  *               title:
  *                 type: string
  *               content:
- *                 type: string
- *               user:
  *                 type: string
  *     responses:
  *       200:
@@ -59,13 +56,13 @@ module.exports = router;
  *             required:
  *               - title
  *               - content
- *               - user
+ *               - notesId
  *             properties:
  *               title:
  *                 type: string
  *               content:
  *                 type: string
- *               user:
+ *               notesId:
  *                 type: string
  *     responses:
  *       200:
