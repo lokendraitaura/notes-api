@@ -10,7 +10,7 @@ const {
 
 router.post("/create", auth, createNote);
 router.get("/get", auth, getNotes);
-router.put("/update/:id", auth, updateNote);
+router.put("/update", auth, updateNote);
 router.delete("/delete/:id", auth, deleteNote);
 
 module.exports = router;
@@ -56,13 +56,13 @@ module.exports = router;
  *             required:
  *               - title
  *               - content
- *               - notesId
+ *               - noteId
  *             properties:
  *               title:
  *                 type: string
  *               content:
  *                 type: string
- *               notesId:
+ *               noteId:
  *                 type: string
  *     responses:
  *       200:
@@ -88,22 +88,22 @@ module.exports = router;
 
 /**
  * @swagger
- * /api/notes/delete:
+ * /api/notes/delete/{noteId}:
  *   delete:
- *     summary: delete notes
+ *     summary: Delete a note by ID
  *     tags: [Notes]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - id
- *             properties:
- *               id:
- *                 type: string
+ *     parameters:
+ *       - in: path
+ *         name: noteId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the note to delete
  *     responses:
  *       200:
- *         description: Notes deleted
+ *         description: Note deleted successfully
+ *       404:
+ *         description: Note not found
+ *       500:
+ *         description: Server error
  */
